@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Fetch Api</title>
+	</head>
+<body>
+
+	<h1>This is fetch API call</h1>
+	<input type="text" id="myin" placeholder="Enter city name..." />
+	<button id="mybtn">Fetch</button>
+	<div id="info"></div>
+	<script type="text/javascript">
+		
+	document.getElementById("mybtn").onclick=async()=>{
+		let city=document.getElementById("myin").value;
+	
+		var data=await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=9b0f51dc439417146db5733e0c4144f6`)
+var data2=await data.json();
+
+
+	// 	.then(data=>{
+	// 	return (data.json())})
+	// 	.then(data2=>{
+	// 	 console.log(data2)
+	// 	// console.log(data2.main.temp)
+	// 	// console.log(data2.weather[0].description)
+		document.getElementById("info").innerHTML=`
+				<ul>
+
+					<li>City:${data2.name}</li>
+					<li>Temp::${data2.main.temp}</li>
+					<li>Desc:${data2.weather[0].description}</li>
+				</ul
+		`
+	
+}
+	
+	</script>
+</body>
+</html>
